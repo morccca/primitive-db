@@ -5,7 +5,7 @@
 
 ## Запуск
 
-Python 3.12+, uv.
+Python 3.12+, uv. Автор: Naumov Pavel.
 
 ```bash
 uv sync
@@ -46,7 +46,9 @@ uv run python -m unittest discover -s tests
 uv build
 ```
 
-[Демонстрация](docs/demo.cast)
+![Демонстрация](docs/demo.gif)
+
+[Запись asciinema](docs/demo.cast)
 
 Запустить сценарий: `uv run python scripts/demo.py`.
 Посмотреть запись: `uvx asciinema play docs/demo.cast`.

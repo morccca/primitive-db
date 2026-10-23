@@ -8,10 +8,7 @@ from unittest.mock import patch
 def main():
     with tempfile.TemporaryDirectory() as directory:
         os.environ["PRIMITIVE_DB_DIR"] = directory
-        from primitive_db.decorators import create_cacher
-        from primitive_db.engine import execute
-
-        cache = create_cacher()
+        from primitive_db.engine import run
         print("Демонстрация на временной базе. Команды выполняются программой.")
         commands = [
             "create_table users name:str age:int active:bool",
@@ -26,16 +23,25 @@ def main():
             "select from users",
             "drop_table users",
             "list_tables",
+            "exit",
         ]
 
         def confirm(message):
             print(message + "y")
             return "y"
 
-        for command in commands:
+        commands = iter(commands)
+
+        def read_command(message):
+            command = next(commands)
             print("\n> " + command, flush=True)
-            with patch("builtins.input", side_effect=confirm):
-                execute(command, cache)
+            return command
+
+        with (
+            patch("prompt.string", side_effect=read_command),
+            patch("builtins.input", side_effect=confirm),
+        ):
+            run()
 
 
 if __name__ == "__main__":
