@@ -10,9 +10,9 @@ python3 -m pip install -r requirements.txt
 python3 main.py
 ```
 
-`main.py` запускает приложение. В `primitive_db/`: `engine.py` — ввод
-команд, `core.py` — операции, `parser.py` — разбор команд,
-`utils.py` — файлы, `decorators.py` — ошибки, подтверждение и кэш.
+`main.py` — запуск, `commands.py` — разбор и выполнение команд,
+`database.py` — операции с таблицами и сохранение JSON,
+`decorators.py` — обработка ошибок, подтверждение удаления и кэш.
 
 ## Ввод и вывод
 
