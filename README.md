@@ -6,13 +6,17 @@
 ## Запуск
 
 ```bash
-python3 -m pip install -r requirements.txt
-python3 main.py
+uv sync
+uv run database
 ```
 
-`main.py` — запуск, `commands.py` — разбор и выполнение команд,
-`database.py` — операции с таблицами и сохранение JSON,
-`decorators.py` — обработка ошибок, подтверждение удаления и кэш.
+Модули находятся в `src/primitive_db/`:
+`main.py` — запуск, `engine.py` — выполнение команд,
+`parser.py` — разбор ввода, `core.py` — операции с таблицами,
+`utils.py` — чтение и запись JSON, `constants.py` — настройки,
+`decorators.py` — обработка ошибок, подтверждения и кэш.
+
+Проверка стиля: `uv run ruff check .`.
 
 ## Ввод и вывод
 
